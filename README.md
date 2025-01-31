@@ -9,6 +9,12 @@ The stack sits behind a `traefik` proxy
 
 * [Traefik Dashboard](https://localhost:8443 "Traefik Reverse Proxy Dashboard")
 
+Requirements
+
+* docker
+* [nvidia drivers](https://ubuntu.com/server/docs/nvidia-drivers-installation#p-97843-installing-the-drivers-on-servers-andor-for-computing-purposes "Installing the drivers on servers and/or for computing purposes")
+* [nvidia container-toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+
 ## startup
 
 The commands below should get you up and running.
@@ -47,7 +53,7 @@ press <kbd>⌃ Control</kbd> + <kbd>C</kbd> to stop viewing the log output.
 
 ## models
 
-To load a different model by default, create a `.env` and add the contents below.  Replace `deepseek-r1:32b` with the desired model.  A list of models is available on ollama.com/library.
+To load a different model by default, create a `.env` and add the contents below.  Replace `deepseek-r1:32b` with the desired model.  A list of models is available on <https://ollama.com/library>.
 
 ```bash
 OLLAMA_MODEL_PULL=deepseek-r1:32b
@@ -64,6 +70,8 @@ Additional models can be added to `ollama` in the admin settings <https://localh
 Other than that you should pretty much be able to start chatting.
 
 ![openwebui chat](images/openwebui-chat.png "Chat Prompt")
+
+The latest version of the default `ollama` model is pulled on container startup via the `scripts/ollama-entry.sh` script.  Models can also be updated in the web `open-webui` interface.
 
 ## cleanup
 
@@ -97,5 +105,3 @@ To update the docker images and recreate containers run:
 docker compose pull
 docker compose up -d
 ```
-
-The latest version of the default `ollama` model is pulled on container startup via the `scripts/ollama-entry.sh` script.  Models can also be updated in the web `open-webui` interface.
