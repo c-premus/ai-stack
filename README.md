@@ -86,3 +86,16 @@ To just remove all unused images:
 ```bash
 docker image prune --all
 ```
+
+All application files are saved locally in the `ollama` and `openwebui` subdirectories.  Those subdirectories are included in `.gitignore` so they aren't uploaded to github.
+
+## update
+
+To update the docker images and recreate containers run:
+
+```bash
+docker compose pull
+docker compose up -d
+```
+
+The latest version of the default `ollama` model is pulled on container startup via the `scripts/ollama-entry.sh` script.  Models can also be updated in the web `open-webui` interface.
